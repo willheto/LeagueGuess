@@ -16,10 +16,10 @@ function GuessScene() {
     const [visiblePoints, setVisiblePoints] = useState(0);
     const [rounds, setRounds] = useState(0);
     const [gameOver, setGameOver] = useState(false);
-    const [playerName, setPlayerName] = useState("");
+    const [playerName, setPlayerName] = useState("Bob");
     const [hsNames, setHsNames] = useState([{ name: "test", points: "test" }])
 
-    let testing = [{}];
+    let testing = [];
 
     useEffect(() => {
         let champ = document.getElementById('champion');
@@ -48,7 +48,7 @@ function GuessScene() {
     }
 
     const goNext = (event) => {
-        if (rounds === 9) {
+        if (rounds === 0) {
             setGameOver(true);
             setClip("");
 
@@ -105,10 +105,10 @@ function GuessScene() {
                     <div className="highScores">
 
                         <div>
-                            {hsNames.map(name => <div>{name.name}</div>)}
+                            {hsNames.map(name => <div className="hsNames">{name.name}</div>)}
                         </div>
                         <div>
-                        {hsNames.map(name => <div>{name.points}</div>)}
+                        {hsNames.map(name => <div className="hsPoints">{name.points} Points</div>)}
                         </div>
 
                     </div>
