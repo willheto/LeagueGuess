@@ -25,6 +25,8 @@
     -webkit-text-stroke: 2px black; /* width and color */
     display: block;
     font-weight: bold;
+    border: 1px #E9F1F7 solid;
+    border-radius: 5px;
 }
 
 .answerWrapper {
@@ -35,7 +37,7 @@
     border-top: 2px #E9F1F7 solid;
     border-bottom: 2px #E9F1F7 solid;
     width: 100%;
-    position: fixed;
+    position: absolute;
     margin-top: 250px;
     z-index: 1;
     color: #E9F1F7;
@@ -81,6 +83,66 @@
     margin-left: 35px;
     margin-top: 15px;
     -webkit-text-stroke: 2px black; /* width and color */
+}
+
+.highScores {
+    position: absolute;
+    border: 1px white solid;
+    color: white;
+    font-size: 40px;
+    width: 600px;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black; /* width and color */
+    z-index: 3;
+    display: flex;
+}
+
+.name {
+    color: white;
+    position: absolute;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 35px;
+    margin-top: 70px;
+    -webkit-text-stroke: 2px black; /* width and color */
+}
+
+.nameInput {
+    background-color: #131B23;
+    border: none;
+    color:#E9F1F7;
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+    border: 1px #E9F1F7 solid;
+    border-radius: 5px;
+    -webkit-text-stroke: white;
+}
+
+.hsNames {
+    width: 295px;
+    border: 2px white solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 60px;
+}
+
+.hsPoints {
+    width: 295px;
+    border: 2px white solid;
+    float: right;
+    height: 60px;
+}
+
+.lbHeader {
+    color: white;
+    font-size: 40px;
+    width: 600px;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black; /* width and color */
+    z-index: 3;
+    margin-top: 60px;
 }
 
 h1 {

@@ -16,7 +16,10 @@ function GuessScene() {
     const [visiblePoints, setVisiblePoints] = useState(0);
     const [rounds, setRounds] = useState(0);
     const [gameOver, setGameOver] = useState(false);
+    const [playerName, setPlayerName] = useState("");
+    const [hsNames, setHsNames] = useState([{ name: "test", points: "test" }])
 
+    let testing = [{}];
 
     useEffect(() => {
         let champ = document.getElementById('champion');
@@ -26,20 +29,14 @@ function GuessScene() {
 
 
     const handleType = (event) => {
-        console.log(event)
         event.preventDefault();
         setAnswer(event.target.value)
-        console.log(answer)
     }
 
     const checkAnswer = (event) => {
         event.preventDefault();
-        console.log(event)
-        console.log(champion);
-        console.log(answer);
-        console.log(answer === champion);
-        if (answer === champion) {
-            setClip(`rect(1, 200px, 200px, 0)`);
+        if (answer.toLowerCase() === champion.toLowerCase()) {
+            setClip("");
             setRightAnswer(true);
         } else {
             setClip(`rect(0, ${clipTimes}px, ${clipTimes}px, 0)`);
@@ -50,10 +47,24 @@ function GuessScene() {
         }
     }
 
-    const goNext = () => {
+    const goNext = (event) => {
         if (rounds === 9) {
-            setClip(`rect(1, 200px, 200px, 0)`);
             setGameOver(true);
+            setClip("");
+
+            window.localStorage.setItem(`${playerName}`, `${points}`)
+            const items = { ...localStorage };
+
+            for (let index = 0; index < Object.keys(items).length; index++) {
+
+                let hsNames1 = ({ name: Object.keys(items)[index], points: Object.values(items)[index] });
+                testing = testing.concat(hsNames1);
+                let tempArray = testing;
+                tempArray.sort((a, b) => b.points - a.points);
+                setHsNames(tempArray);
+            }
+
+
         } else {
             setRightAnswer(null);
             setChampion(Champions[Math.floor(Math.random() * (134 - 1)) + 1]);
@@ -68,6 +79,12 @@ function GuessScene() {
         }
     }
 
+    const handleName = (event) => {
+        event.preventDefault();
+        setPlayerName(event.target.value)
+    }
+
+
     if (gameOver === true) {
         return (
             <div>
@@ -81,6 +98,19 @@ function GuessScene() {
 
                     <div className="championSquare">
                         <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>
+                    </div>
+                    <div className="lbHeader">
+                        <h1>Leaderboard</h1>
+                    </div>
+                    <div className="highScores">
+
+                        <div>
+                            {hsNames.map(name => <div>{name.name}</div>)}
+                        </div>
+                        <div>
+                        {hsNames.map(name => <div>{name.points}</div>)}
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -100,37 +130,20 @@ function GuessScene() {
                     <div className="championSquare">
                         <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>
                     </div>
+
                     <button className="goNext" onClick={goNext}>
                         <h1>Go Next</h1>
                     </button>
-                </div>
-            </div>
-        );
-    } else if (rightAnswer === false) {
-        return (
-            <div>
-                <div className="points">Points: {visiblePoints}</div>
-                <div className="answerReport">
-                    <h1>Try again tomorrow!</h1>
-                </div>
-                <div className="guessScene">
-                    <h1 className="header">Who am I?</h1>
 
-                    <div className="championSquare">
-                        <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>
-                    </div>
-                    <div className="answerWrapper">
-                        <form onSubmit={checkAnswer}>
-                            <input autoFocus className="inputGuess" onChange={handleType}></input>
-                        </form>
-                    </div>
                 </div>
             </div>
         );
     }
+
     return (
         <div>
             <div className="points">Points: {visiblePoints}</div>
+            <div className="name">Name: <input value={playerName} className="nameInput" onChange={handleName}></input></div>
             <div className="guessScene">
                 <h1 className="header">Who am I?</h1>
 
