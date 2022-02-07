@@ -1,0 +1,89 @@
+.guessScene {
+    width: 600px;
+    height: 800px;
+    margin: auto;
+}
+
+#champion {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    clip: rect(1, 200px, 200px, 0);
+    margin-left: -225px;
+    filter: blur(0px);
+}
+
+.inputGuess {
+    height: 100px;
+    width: 550px;
+    font-size: 60px;
+    text-align: center;
+    background-color: #131B23;
+    border: none;
+    color:#E9F1F7;
+    margin-top: 120px;
+    -webkit-text-stroke: 2px black; /* width and color */
+    display: block;
+    font-weight: bold;
+}
+
+.answerWrapper {
+    margin-top: 80px;
+}
+
+.answerReport {
+    border-top: 2px #E9F1F7 solid;
+    border-bottom: 2px #E9F1F7 solid;
+    width: 100%;
+    position: fixed;
+    margin-top: 250px;
+    z-index: 1;
+    color: #E9F1F7;
+    -webkit-text-stroke: 2px black; /* width and color */
+}
+
+.goNext {
+    border: 2px #E9F1F7 solid;
+    border-radius: 10px;
+    width: 50%;
+    height: 120px;
+    margin: auto;
+    margin-top: 30px;
+    z-index: 3;
+    color: #E9F1F7;
+    -webkit-text-stroke: 2px black; /* width and color */
+    background-color: #131B23;
+}
+
+.goNext:hover {
+    
+    background-color: black;
+}
+
+.header {
+    color: #E9F1F7;
+    -webkit-text-stroke: 2px black; /* width and color */
+}
+
+.championSquare {
+    width: 450px;
+    height: 450px;
+    margin: auto;
+
+}
+
+.points {
+    color: white;
+    position: absolute;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 35px;
+    margin-top: 15px;
+    -webkit-text-stroke: 2px black; /* width and color */
+}
+
+h1 {
+    font-size: 60px;
+    margin-top: 15px;
+}
