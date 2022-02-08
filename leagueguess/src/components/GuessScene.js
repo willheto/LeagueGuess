@@ -48,7 +48,7 @@ function GuessScene() {
     }
 
     const goNext = (event) => {
-        if (rounds === 1) {
+        if (rounds === 9) {
             setVisiblePoints(points);
             setGameOver(true);
             setClip("");
