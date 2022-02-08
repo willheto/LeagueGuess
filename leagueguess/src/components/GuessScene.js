@@ -7,6 +7,7 @@ import Leaderboard from './Leaderboard';
 import GoNext from './GoNext';
 import AnswerWrapper from './AnswerWrapper';
 import AnswerReport from './AnswerReport';
+import scoreService from '../services/scores'
 
 
 function GuessScene() {
@@ -22,7 +23,6 @@ function GuessScene() {
     const [visiblePoints, setVisiblePoints] = useState(0);
     const [rounds, setRounds] = useState(0);
     const [gameOver, setGameOver] = useState(false);
-    const [hsNames, setHsNames] = useState([{ name: "null", points: "null" }])
     const [playerName, setPlayerName] = useState("Bob");
 
     let testing = [];
@@ -53,7 +53,16 @@ function GuessScene() {
             setGameOver(true);
             setClip("");
 
-            window.localStorage.setItem(`${playerName}`, `${points}`)
+            const scoreObject = {
+                name: playerName,
+                points: points
+            }
+
+            scoreService
+                .create(scoreObject)
+
+
+            /*window.localStorage.setItem(`${playerName}`, `${points}`)
             const items = { ...localStorage };
 
             for (let index = 0; index < Object.keys(items).length; index++) {
@@ -63,7 +72,7 @@ function GuessScene() {
                 let tempArray = testing;
                 tempArray.sort((a, b) => b.points - a.points);
                 setHsNames(tempArray);
-            }
+            }*/
 
 
         } else {
@@ -84,7 +93,7 @@ function GuessScene() {
     const IsGameOver = () => {
         if (gameOver === true) {
             return (
-                <Leaderboard hsNames={hsNames} />
+                <Leaderboard />
             );
         } return (
             <GoNext goNext={goNext} />
