@@ -1,0 +1,10 @@
+.answerReport {
+    border-top: 2px #E9F1F7 solid;
+    border-bottom: 2px #E9F1F7 solid;
+    width: 100%;
+    position: absolute;
+    margin-top: 250px;
+    z-index: 1;
+    color: #E9F1F7;
+    -webkit-text-stroke: 2px black; /* width and color */
+}

@@ -1,0 +1,22 @@
+.nameInput {
+    background-color: #131B23;
+    border: none;
+    color:#E9F1F7;
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+    border: 1px #E9F1F7 solid;
+    border-radius: 5px;
+    -webkit-text-stroke: white;
+}
+
+.name {
+    color: white;
+    position: absolute;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 35px;
+    margin-top: 70px;
+    -webkit-text-stroke: 2px black; /* width and color */
+}
