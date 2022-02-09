@@ -4,7 +4,9 @@
     width: 100%;
     position: absolute;
     margin-top: 250px;
-    z-index: 1;
+    z-index: 4;
     color: #E9F1F7;
     -webkit-text-stroke: 2px black; /* width and color */
+    background: rgb(17,59,91);
+    background: linear-gradient(90deg, rgba(17,59,91,0.4233894241290266) 0%, rgba(91,130,167,0.44019614681810226) 58%, rgba(91,130,167,0.437395026369923) 100%);
 }

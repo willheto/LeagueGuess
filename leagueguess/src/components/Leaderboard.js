@@ -10,25 +10,28 @@ const Leaderboard = () => {
         scoreService
             .getAll()
             .then(response => {
-                setScores(response.data.sort((a, b) => b.points - a.points));
+                setScores(response.data.sort((a, b) => b.points - a.points).slice(0,10));
             })
-        
+
     }, []);
 
 
     return (
-        <div>
+        <div className="wrapper">
             <div className="lbHeader">
                 <h1>Leaderboard</h1>
             </div>
             <div className="highScores">
+                <div class>
+                    {scores.map((score, index) =>
+                        <div className="scoreWrapper">
+                            <div className="position">{index + 1}</div>
+                            <div className="hsNames">{score.name}</div>
+                            <div className="hsPoints">{score.points}</div>
+                        </div>
+                    )}
+                </div>
 
-                <div>
-                    {scores.map(name => <div className="hsNames">{name.name}</div>)}
-                </div>
-                <div>
-                    {scores.map(name => <div className="hsPoints">{name.points} Points</div>)}
-                </div>
             </div>
         </div>
     );

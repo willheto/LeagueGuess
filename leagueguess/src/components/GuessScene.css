@@ -1,5 +1,5 @@
 .guessScene {
-    width: 600px;
+    width: 1000px;
     height: 800px;
     margin: auto;
 }
@@ -11,37 +11,6 @@
     clip: rect(1, 200px, 200px, 0);
     margin-left: -225px;
     filter: blur(0px);
-}
-
-.inputGuess {
-    height: 100px;
-    width: 550px;
-    font-size: 60px;
-    text-align: center;
-    background-color: #131B23;
-    border: none;
-    color:#E9F1F7;
-    margin-top: 120px;
-    -webkit-text-stroke: 2px black; /* width and color */
-    display: block;
-    font-weight: bold;
-    border: 1px #E9F1F7 solid;
-    border-radius: 5px;
-}
-
-.answerWrapper {
-    margin-top: 80px;
-}
-
-.answerReport {
-    border-top: 2px #E9F1F7 solid;
-    border-bottom: 2px #E9F1F7 solid;
-    width: 100%;
-    position: absolute;
-    margin-top: 250px;
-    z-index: 1;
-    color: #E9F1F7;
-    -webkit-text-stroke: 2px black; /* width and color */
 }
 
 .goNext {
@@ -74,44 +43,27 @@
 
 }
 
-.highScores {
-    position: absolute;
-    border: 1px white solid;
-    color: white;
-    font-size: 40px;
-    width: 600px;
-    font-weight: bold;
-    -webkit-text-stroke: 2px black; /* width and color */
-    z-index: 3;
+.headerBar {
     display: flex;
+    justify-content: space-between;
 }
 
-.hsNames {
-    width: 295px;
-    border: 2px white solid;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 60px;
+.playAgain {
+    border: 2px #E9F1F7 solid;
+    border-radius: 10px;
+    width: 300px;
+    height: 105px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hsPoints {
-    width: 295px;
-    border: 2px white solid;
-    float: right;
-    height: 60px;
+.playAgain:hover {
+    background-color: black;
 }
 
-.lbHeader {
-    color: white;
-    font-size: 40px;
-    width: 600px;
-    font-weight: bold;
+.playAgainFont {
+    font-size: 50px;
+    color: #E9F1F7;
     -webkit-text-stroke: 2px black; /* width and color */
-    z-index: 3;
-    margin-top: 60px;
-}
-
-h1 {
-    font-size: 60px;
-    margin-top: 15px;
 }

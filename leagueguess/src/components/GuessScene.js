@@ -25,8 +25,6 @@ function GuessScene() {
     const [gameOver, setGameOver] = useState(false);
     const [playerName, setPlayerName] = useState("Bob");
 
-    let testing = [];
-
     useEffect(() => {
         let champ = document.getElementById('champion');
         champ.style.clip = clip;
@@ -48,7 +46,7 @@ function GuessScene() {
     }
 
     const goNext = (event) => {
-        if (rounds === 9) {
+        if (rounds === 0) {
             setVisiblePoints(points);
             setGameOver(true);
             setClip("");
@@ -60,20 +58,6 @@ function GuessScene() {
 
             scoreService
                 .create(scoreObject)
-
-
-            /*window.localStorage.setItem(`${playerName}`, `${points}`)
-            const items = { ...localStorage };
-
-            for (let index = 0; index < Object.keys(items).length; index++) {
-
-                let hsNames1 = ({ name: Object.keys(items)[index], points: Object.values(items)[index] });
-                testing = testing.concat(hsNames1);
-                let tempArray = testing;
-                tempArray.sort((a, b) => b.points - a.points);
-                setHsNames(tempArray);
-            }*/
-
 
         } else {
             setRightAnswer(null);
@@ -100,21 +84,60 @@ function GuessScene() {
         );
     }
 
+    const newGame = () => {
+        setRightAnswer(null);
+        setChampion(Champions[Math.floor(Math.random() * (134 - 1)) + 1]);
+        setAnswer(null);
+        setBlurTimes(0);
+        setClip("rect(0, 100px, 100px, 0)");
+        setClipTimes(150);
+        setBlur("blur(0px)");
+        setPoints(1000);
+        setVisiblePoints(0);
+        setRounds(0);
+        setGameOver(false);
+    }
 
-    if (gameOver === true || rightAnswer === true) { // If player guessed right or the game ends
+
+    if (gameOver === true) { // If player guessed right or the game ends
         return (
             <div>
-                <Points points={visiblePoints}></Points>
-                <PlayerInfo setPlayerName={setPlayerName} playerName={playerName}></PlayerInfo>
-                <AnswerReport points={points} gameOver={gameOver} />
-
                 <div className="guessScene">
-                    <h1 className="header">Who am I?</h1>
-
-                    <div className="championSquare">
-                        <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>
+                    <div className="headerBar">
+                        <Points points={visiblePoints}></Points>
+                        <h1 className="header">LeagueGuess</h1>
+                        <PlayerInfo setPlayerName={setPlayerName} playerName={playerName}></PlayerInfo>
                     </div>
                     <IsGameOver />
+
+                    <div className="playAgain" onClick={newGame}><h1 className="playAgainFont">Play again</h1></div>
+                    <div className="championSquare">
+                        <img alt="a champion to be guessed" id="champion" src={""}></img>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (rightAnswer === true) { // If player guessed right
+        return (
+            <div>
+                <AnswerReport points={points} gameOver={gameOver} />
+                <div className="guessScene">
+                    <div className="headerBar">
+                        <Points points={visiblePoints}></Points>
+                        <h1 className="header">LeagueGuess</h1>
+                        <PlayerInfo setPlayerName={setPlayerName} playerName={playerName}></PlayerInfo>
+                    </div>
+
+
+                    <div className="guessScene">
+                        <div className="championSquare">
+                            <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>
+                        </div>
+                        <IsGameOver />
+
+                    </div>
                 </div>
             </div>
         );
@@ -122,10 +145,13 @@ function GuessScene() {
 
     return ( // If it's time to guess
         <div>
-            <Points points={visiblePoints}></Points>
-            <PlayerInfo setPlayerName={setPlayerName} playerName={playerName}></PlayerInfo>
+
             <div className="guessScene">
-                <h1 className="header">Who am I?</h1>
+                <div className="headerBar">
+                    <Points points={visiblePoints}></Points>
+                    <h1 className="header">LeagueGuess</h1>
+                    <PlayerInfo setPlayerName={setPlayerName} playerName={playerName}></PlayerInfo>
+                </div>
 
                 <div className="championSquare">
                     <img alt="a champion to be guessed" id="champion" src={`https://opgg-static.akamaized.net/images/lol/champion/${champion}.png?image=c_scale,q_auto,w_46&v=1643767689`}></img>

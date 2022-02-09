@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = '/api/highscores'
+const baseUrl = 'http://localhost:3001/api/highscores'
 
 const getAll = () => {
   return axios.get(baseUrl)
